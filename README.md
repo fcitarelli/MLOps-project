@@ -109,9 +109,6 @@ Test (`tests/`):
 
 Deploy simulato (`deploy/`):
 
-> Richiesto esplicitamente come "cosa pluggata senza token", solo per
-> dimostrare il passaggio della pipeline — non un deploy reale.
-
 - `deploy/app.py` — piccola app Gradio che avvolge `predict()`.
 - `deploy/README_space.md` — README con frontmatter in stile Hugging Face
   Space (`sdk: gradio`, ecc.).
