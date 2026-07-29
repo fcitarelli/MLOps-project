@@ -6,6 +6,7 @@ from transformers import (
 
 from scipy.special import softmax
 from src.config import MODEL_SAVE_PATH
+from src.monitoring import log_prediction
 
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_SAVE_PATH)
@@ -15,7 +16,7 @@ model = AutoModelForSequenceClassification.from_pretrained(
 )
 
 
-def predict(text):
+def predict(text, log=True):
 
     encoded = tokenizer(
         text,
@@ -41,7 +42,7 @@ def predict(text):
         2: "positive",
     }
 
-    return {
+    result = {
 
         "label": labels[prediction],
 
@@ -49,6 +50,11 @@ def predict(text):
 
         "scores": scores.tolist(),
     }
+
+    if log:
+        log_prediction(text, result)
+
+    return result
 
 
 if __name__ == "__main__":

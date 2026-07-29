@@ -7,3 +7,6 @@ scipy
 accelerate
 evaluate
 sentencepiece
+gradio
+pytest
+evidently
